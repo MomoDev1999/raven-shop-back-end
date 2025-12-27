@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-raven-shop
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: demo
+      SPRING_DATASOURCE_URL: jdbc:mysql://mariadb:3306/casados?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: casados
+      SPRING_DATASOURCE_PASSWORD: casados
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
+    networks:
+      - casaos
+
+networks:
+  casaos:
+    external: true

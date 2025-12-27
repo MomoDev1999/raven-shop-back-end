@@ -1,0 +1,6 @@
+*.war
+*.log
+*.class
+*.iml
+.idea/
+node_modules/
